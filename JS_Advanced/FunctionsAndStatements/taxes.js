@@ -15,7 +15,7 @@ function taxes(name, population, treasury){
         }
     }
     return city;
-}
+} 
 let result = taxes('Burgas',2000, 10000);
 result.collectTaxes();
 result.applyGrowth(10);
