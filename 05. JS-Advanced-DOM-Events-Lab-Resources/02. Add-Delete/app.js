@@ -1,12 +1,21 @@
 function addItem() {
-    const liElement = document.createElement('li');
-    liElement.textContent = document.getElementById('newItemText').value;
+    const input = document.getElementById('newItemText');
+    const liElement = createElement('li', input.value);
+
+    const deleteBtn = createElement('a', '[DELETE]')
+    deleteBtn.href = "#";
+    liElement.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener('click', (ev) => {
+         ev.target.parentNode.remove();
+    })
 
     document.getElementById('items').appendChild(liElement);
-    document.getElementById('newItemText').value = '';
-}
-// to do with event listener
-function removeItem(){
-    const liElement = document.getElementById('li-to-del');
-    liElement.parentNode.removeChild(liElement);
+    input.value = '';
+
+    function createElement(type, content){
+        const element = document.createElement(type);
+        element.textContent = content; 
+        return element; 
+    }
 }
