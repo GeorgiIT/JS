@@ -61,9 +61,10 @@ async function getRecipeDetails(id, preview) {
             data.steps.map(s => e('p', {}, s))
         )
     );
-
-
+    // Replace the preview with the detailed recipe
     preview.replaceWith(result);
+    // Add an event listener to the detailed recipe to go back to the preview
+    result.addEventListener('click', () => result.replaceWith(preview));
 
 }
 
