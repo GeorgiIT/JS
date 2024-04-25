@@ -1,11 +1,10 @@
-function getRecipeList(){
+async function getRecipeList(){
     const url = 'http://localhost:3030/jsonstore/cookbook/recipes';
     const main = document.querySelector('main')
     
-    // using fetch 
-    fetch(url)
-    .then(response => response.json())
-    .then(recipes => {
+    try{
+        const response = await fetch(url);
+        const recipes = await response.json();
         main.innerHTML = '';
         Object.values(recipes).forEach( r => {
             main.appendChild(
@@ -15,10 +14,10 @@ function getRecipeList(){
                 )
             );
         })
-    })
-    .catch(error => {
+    }
+    catch(error){
         alert(error.message);
-    });
+    };
 
 }
 
