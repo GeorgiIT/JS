@@ -31,7 +31,7 @@ function Person(firstName, lastName){
 Person.prototype.write = function(m){
     console.log(`${this.firstName} ${this.lastName} wrote ${m}`);
 };
-
+ 
 
 let a = new Person('Hristo', 'Botev');
 a.write("Na proshtavane");
