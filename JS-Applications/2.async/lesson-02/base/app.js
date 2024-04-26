@@ -24,11 +24,11 @@ window.addEventListener('load', () => {
 })
 
 function createPreview(recipe) {
-    const result =  e('article', { className: 'preview' },
-                        e('div', { className: 'title' },
-                            e('h2', {}, recipe.name)),
-                    e('div', { className: 'small' },
-                    e('img', { src: recipe.img }))
+    const result = e('article', { className: 'preview' },
+        e('div', { className: 'title' },
+            e('h2', {}, recipe.name)),
+        e('div', { className: 'small' },
+            e('img', { src: recipe.img }))
     );
 
     result.addEventListener('click', () => getRecipeDetails(recipe._id, result));
@@ -46,12 +46,12 @@ async function getRecipeDetails(id, preview) {
 
     const data = await response.json();
     const result = e('article', {},
-        e('h2', {id: 'recipe-title'}, data.name),
+        e('h2', { id: 'recipe-title' }, data.name),
         e('div', { className: 'band' },
             e('div', { className: 'thumb' },
-                e('img', {src: data.img})
+                e('img', { src: data.img })
             ),
-            e('div', { className: 'ingredients' }, 
+            e('div', { className: 'ingredients' },
                 e('h3', {}, 'Ingredients'),
                 e('ul', {}, data.ingredients.map(i => e('li', {}, i)))
             ),
@@ -86,7 +86,7 @@ function e(type, attributes, ...content) {
     content.forEach(e => {
         if (typeof e == 'string' || typeof e == 'number') {
             const node = document.createTextNode(e);
-            result.appendChild(node);
+            result.appendChild(node); 
         } else {
             result.appendChild(e);
         }
